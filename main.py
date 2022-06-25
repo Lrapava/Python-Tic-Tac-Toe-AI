@@ -10,7 +10,6 @@ def itomx(arg) :
     i+=1
   return [''.join(x) for x in mx]
 
-
 def printState(state):
   board = itomx(state)
   board = [list(x) for x in board]
@@ -51,7 +50,11 @@ def game(turn, state=0):
       state += 2*3**strategy[state]
     else:
       printState(state)
-      print({-1:" - You've already lost, the rest is just a ceremony!", 0:" - ...", 1:" - You are too incompetent to finish what you've started!.."}[optEnd[state]])
+      print({
+        -1:" - You've already lost, the rest is just a ceremony!", 
+        0 :" - ...", 
+        1 :" - You are too incompetent to finish what you've started!.."
+      }[optEnd[state]])
       x = "penguin"
       while not x.isnumeric(): x = input()
       state += 3**int(x)
@@ -66,6 +69,10 @@ def main():
     turn = input("Who starts the game? ( 0 - Human, 1 - Computer )\n")
   turn = int(turn)
   buildStrat(0, turn)
-  print({ -1 : "You lose, just as I've predicted!", 0 : "Draw..", 1 : "I-I.. I can't believe this! You've defeated me!" }[game(turn)])
+  print({ 
+    -1 : "You lose, just as I've predicted!", 
+    0  : "Draw..", 
+    1  : "I-I.. I can't believe this! You've defeated me!" 
+  }[game(turn)])
 
 main()
